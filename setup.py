@@ -9,6 +9,7 @@ setup(
     author_email = "foram2494@gmail.com",
     description = ("Train and Explain Dyslexia from 3D brain MRI scan using Deep Learning"),
     packages=find_packages(),
+    install_requires=required_packages,
     include_package_data=True
 )
 

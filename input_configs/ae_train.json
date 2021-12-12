@@ -1,0 +1,8 @@
+{
+	"function": "train",
+	"model_name": "model1",
+	"batch_size": 24,
+	"iterations": 5,
+	"epochs": 100,
+	"logging_interval": 3
+}

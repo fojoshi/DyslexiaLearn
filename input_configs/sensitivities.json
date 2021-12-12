@@ -1,0 +1,9 @@
+{
+	"autoencoder_model": "model1",
+	"classifier_model": "classifier",
+	"num_perturbations_per_image": 1000,
+	"noise_shape":  [10, 10, 10], 
+	"noise_mean": 0,
+	"noise_std": 5
+}
+
