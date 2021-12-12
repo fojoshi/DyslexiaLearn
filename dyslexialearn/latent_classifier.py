@@ -137,13 +137,14 @@ num_expts = options.get("num_splits", 10)
 latent_files_dir = options.get("latent_files_dir")
 num_model_initializations = options.get("num_models_per_split", 1)
 results_file = options.get("results_write", "results.csv")
+model_name_suffix = options.get("model_name", "results.csv")
 all_results = []
 for exp in range(num_expts):
     train_data, test_data, X_train, X_test, Y_train, Y_test = getTrainTestSplit(data, dir=latent_files_dir, random_state=exp)
     this_result = {}
     for _ in range(num_model_initializations):
         print(f"Split number: {exp}, Model number: {_}")
-        model_name = "classifier" if options.get("save_all_models", False) else f"classifier_split{exp}_init_{_}"
+        model_name =  f"{model_name_suffix}_split{exp}_init_{_}" if options.get("save_all_models", False) else model_name_suffix
         this_acc, preds = train_model(X_train, Y_train, X_test, Y_test, options=options["training_options"], model_name=model_name)
         this_result[_] = {}
         this_result[_]["train_ids"] = train_data["id"].values.tolist()

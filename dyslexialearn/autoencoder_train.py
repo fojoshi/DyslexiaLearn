@@ -90,21 +90,21 @@ def train(options):
     try:
         #Training model
         loss_sum = 0
-        iterations=options.get("iterations", 1000)
+        train_steps=options.get("train_steps", 1000)
         logging_interval = options.get("logging_interval", 3)
         batch_size = options.get("batch_size", 32)
     
         i = 0
         print(f"Training Starts. You can Control+C anytime, model gets saved every {logging_interval} iteration(s).")
-        while i < iterations:
-            for _ in tqdm(range(min(logging_interval, iterations-i))):
+        while i < train_steps:
+            for _ in tqdm(range(min(logging_interval, train_steps-i))):
                 minibatch = getMiniBatch(X_train, batch_size)
                 l,_ = sess.run(fetches = [loss,optimizer], feed_dict = {X_input : minibatch})
                 loss_sum += l
                 i += 1
             
             l_test =  sess.run(fetches = loss, feed_dict = {X_input : X_test})
-            print(f"Iterations: {i}/{iterations}: Train Loss {loss_sum/logging_interval}. Test Loss: {l_test}")
+            print(f"Steps: {i}/{train_steps}: Train Loss {loss_sum/logging_interval}. Test Loss: {l_test}")
             
             print(f"Saving current model weights in models/{model_name}")
             saver.save(sess, f"models/{model_name}/model.ckpt")
