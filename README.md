@@ -8,7 +8,9 @@ Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Conv
 1. Please install anaconda: https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html
 2. From the project root folder, run the following to setup environment:
 `conda env create -f environment.yml`
-3. Install the dyslexialearn module, by running the following from the project root:
+3. Activate your new conda environment
+`conda activate DyslexiaLearn`
+4. Install the dyslexialearn module, by running the following from the project root:
 `pip install -e .`
 
 ## Data Setup
@@ -52,6 +54,26 @@ This converts all files in `data/raw_images` to lower dimensional 15x18x15x32 si
 `python dyslexialearn/latent_classifier.py input_configs/classifier.json`
 
 This trains binary classifiers on the latent images, saves new models in `models` and outputs a statistic file for EDA.
+
+The output `results.json` file will have the following structure:
+[	
+	# for each split
+	{
+		"model_idx_1":{
+			"train_ids": [ ... Training Image Ids ... ],
+			"test_ids": [ ... Test Image Ids ... ],
+			"preds: [ ... Predicted Probabilities for all test images ... ],
+			"truth": [ ... Ground Truth of all test images ... ],
+			"acc": test_accuracy
+		}
+		"model_idx_2": {
+			.....
+		}
+	}
+]
+
+4. Get prediction csv
+`python dyslexialearn/predictor.py input_configs/predict.json`
 
 
 ## Importance Analysis
@@ -100,13 +122,17 @@ Below is a note on what each of the input json files does:
 4. `sensitivities.json`
 
 {
-	"autoencoder_model": "model1",  # Name of autoencoder model
-	"classifier_model": "classifier", # Name of binary classification model
+	"autoencoder_model": "ae_model",  # Name of autoencoder model
+	"classifier_model": "cnn_classifier", # Name of binary classification model
 	"num_perturbations_per_image": 1000,
 	"noise_shape":  [10, 10, 10], 
 	"noise_mean": 0,
 	"noise_std": 1
 }
 
+5. `predict.json`
 
-
+{
+	"autoencoder_model": "ae_model",
+	"classifier_model": "classifier_split1_init_0"
+}
