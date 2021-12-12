@@ -1,7 +1,7 @@
 {
-	"autoencoder_model": "model1",
-	"classifier_model": "classifier",
-	"num_perturbations_per_image": 1000,
+	"autoencoder_model": "ae_model",
+	"classifier_model": "cnn_classifier",
+	"num_perturbations_per_image": 2,
 	"noise_shape":  [16, 16, 16], 
 	"noise_mean": 0,
 	"noise_std": 1

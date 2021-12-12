@@ -1,13 +1,13 @@
 {
-    "latent_files_dir": "out_data/latent_model1",
+    "latent_files_dir": "out_data/latent_ae_model",
     "model_name": "classifier",
-    "num_splits": 2,
+    "num_splits": 5,
     "save_all_models": true,
-    "num_models_per_split": 2,
+    "num_models_per_split": 3,
     "results_write": "results.json",
     "training_options":{
-        "train_steps": 200,
-        "dropout_rate": 0.25,
+        "train_steps": 800,
+        "dropout_rate": 0.5,
         "batch_size": 64
     }
 }

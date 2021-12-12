@@ -1,0 +1,4 @@
+{
+	"autoencoder_model": "ae_model",
+	"classifier_model": "cnn_classifier"
+}

@@ -1,6 +1,6 @@
 {
 	"function": "train",
-	"model_name": "model1",
+	"model_name": "ae_model2",
 	"batch_size": 24,
 	"train_steps": 100,
 	"logging_interval": 3
