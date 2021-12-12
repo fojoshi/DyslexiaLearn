@@ -1,7 +1,18 @@
 import os
 from setuptools import setup, find_packages
 
+def make_directories(dir):
+    if not os.path.exists(dir):
+        os.makedirs(dir)
 required_packages = [l.strip() for l in open('requirements.txt', 'r').readlines() if l != '\n']
+
+make_directories("data")
+make_directories("models")
+make_directories("out_data")
+make_directories("out_data/sensitivities")
+make_directories("out_data/sensitivities/cases")
+make_directories("out_data/sensitivities/controls")
+
 setup(
     name = "dyslexialearn",
     version = "0.0.1",
