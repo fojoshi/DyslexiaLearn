@@ -33,7 +33,7 @@ data
 - Inside the `data/raw_images` folder, 3D 121x145x121 jacobian brain MRI scans are expected with the following naming convention:
 `jac_rc1r<<id>>_debiased_deskulled_denoised_xTemplate_subtypes.nii`
 
-- `xTemplate_gm50wm50_mask.nii` is a boolean brain mask of the shape 121x145x121
+- `xTemplate_gm50wm50_mask.nii` is a brain mask of the shape 121x145x121
 
 ## Directory Setup
 
@@ -84,7 +84,10 @@ The output `results.json` file will have the following structure:
 ]
 ```
 
-4. Get prediction csv
+### Predicting class probabilities with trained models
+
+The following command will generate a csv file containing predicted class probabilities for each subject in the `data/raw_images` folder
+
 `python dyslexialearn/predictor.py input_configs/predict.json`
 
 
