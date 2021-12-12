@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/fjoshi/dyslexia/brain_dataset/models/log_3/model.ckpt"
+all_model_checkpoint_paths: "/home/fjoshi/dyslexia/brain_dataset/models/log_3/model.ckpt"
