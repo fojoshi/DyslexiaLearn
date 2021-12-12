@@ -1,15 +1,9 @@
 import numpy as np
-from scipy import ndimage
 import tensorflow as tf
 import nibabel as nib
-from sklearn.linear_model import LinearRegression
-import multiprocessing
+# import multiprocessing
 import sys
-import copy
-import sklearn
 import pandas as pd
-import sklearn.metrics
-import warnings
 import json
 import concurrent.futures
 

@@ -80,7 +80,6 @@ def train_model(X_train, Y_train, X_test, Y_test, options, model_name=None):
                                                                           keep_prob:0,
                                                                          istraining:False})
             if (i + 1) % logging_interval == 0:
-                print(f"Train Steps {i + 1}/{train_steps}: is {loss_sum/logging_interval:.3}. Test Loss: {l_test:.3}, Train Acc:{train_acc/logging_interval:.3}, Test Acc:{t_acc:.3}")
                 loss_sum = 0
                 train_acc = 0
 
@@ -146,6 +145,9 @@ for exp in range(num_expts):
         print(f"Split number: {exp}, Model number: {_}")
         model_name =  f"{model_name_suffix}_split{exp}_init_{_}" if options.get("save_all_models", False) else model_name_suffix
         this_acc, preds = train_model(X_train, Y_train, X_test, Y_test, options=options["training_options"], model_name=model_name)
+        print(f"Split number: {exp}, Model number: {_}, Best Accuracy: {this_acc}")
+        print()
+        print()
         this_result[_] = {}
         this_result[_]["train_ids"] = train_data["id"].values.tolist()
         this_result[_]["test_ids"] = test_data["id"].values.tolist()
