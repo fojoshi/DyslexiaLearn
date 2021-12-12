@@ -1,6 +1,10 @@
 # DyselxiaLearn
 
-Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Convolutional Autoencoders, and using trained models to identify regions of the brain most important for identifying Dyslexia.
+Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Convolutional Autoencoders, and using trained models to identify regions of the brain most important for identifying Dyslexia. 
+
+This project is in collaboration with the Multimedia and Bioinformatics lab in Clemson University and Medical University of South Carolina (MUSC).
+
+Email at `foram2494@gmail.com` for questions/suggestions.
 
 
 ## Environment Setup
@@ -15,10 +19,14 @@ Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Conv
 
 ## Data Setup
 
+The below datafiles are required for the code to function
+
+```
 data
 ├── n192_data_for_resid.csv
 ├── raw_images
 └── xTemplate_gm50wm50_mask.nii
+```
 
 - `n192_data_for_resid.csv` contains metadata information about all scans, specifically, it needs to contain the columns for `id`, `site` and `Group`
 
@@ -29,11 +37,13 @@ data
 
 ## Directory Setup
 
-You'll need to create the below directories to run various functions of the code
+You'll need the below directories to run various functions of the code. The `pip install -e .` setup command should create these directories automatically.
 
+- data
 - models
 - out_folder
-- out_folder/sensitivities
+- out_folder/sensitivities/cases
+- out_folder/sensitivities/controls
 
 
 ## Training a new model
@@ -56,6 +66,7 @@ This converts all files in `data/raw_images` to lower dimensional 15x18x15x32 si
 This trains binary classifiers on the latent images, saves new models in `models` and outputs a statistic file for EDA.
 
 The output `results.json` file will have the following structure:
+```
 [	
 	# for each split
 	{
@@ -71,6 +82,7 @@ The output `results.json` file will have the following structure:
 		}
 	}
 ]
+```
 
 4. Get prediction csv
 `python dyslexialearn/predictor.py input_configs/predict.json`
@@ -88,6 +100,7 @@ The resulting sensitivity files will be saved in `out_data/sensitivities/cases` 
 Below is a note on what each of the input json files does:
 1. `ae_train.json`
 
+```
 {
 	"function": "train",
 	"model_name": "model1", # Name of model to save in models/"model_name"
@@ -95,16 +108,19 @@ Below is a note on what each of the input json files does:
 	"train_steps": 100,
 	"logging_interval": 3
 }
+```
 
 2. `ae_infer.json`
 
+```
 {
 	"function": "infer",
 	"model_name": "model1"  # Model in models/"model_name" will be used for inferring.
 }
-
+```
 3. `classifier.json`
 
+```
 {
     "latent_files_dir": "out_data/latent_model1", # Directory to read latent data
     "model_name": "classifier", # Model will be save models/"model_name"
@@ -118,9 +134,11 @@ Below is a note on what each of the input json files does:
         "batch_size": 64    
     }
 }
+```
 
 4. `sensitivities.json`
 
+```
 {
 	"autoencoder_model": "ae_model",  # Name of autoencoder model
 	"classifier_model": "cnn_classifier", # Name of binary classification model
@@ -129,10 +147,13 @@ Below is a note on what each of the input json files does:
 	"noise_mean": 0,
 	"noise_std": 1
 }
+```
 
 5. `predict.json`
 
+```
 {
 	"autoencoder_model": "ae_model",
 	"classifier_model": "classifier_split1_init_0"
 }
+```
