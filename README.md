@@ -2,7 +2,7 @@
 
 Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Convolutional Autoencoders, and using trained models to identify regions of the brain most important for identifying Dyslexia. 
 
-This project is in collaboration with the Multimedia and Bioinformatics lab in Clemson University and Medical University of South Carolina (MUSC).
+This collaborative project between the Multimedia and Bioinformatics lab in Clemson University and the Eckert laboratory at the Medical University of South Carolina (MUSC) was supported by the NICHD (R01 HD 069374).
 
 Email at `foram2494@gmail.com` for questions/suggestions.
 
