@@ -1,6 +1,6 @@
 # DyslexiaLearn
 
-Project repository for predicting Dyslexia from 3D Brain MRI scans using 3D Convolutional Autoencoders, and using trained models to identify regions of the brain most important for identifying Dyslexia. 
+Project repository for predicting Dyslexia using defomration-based (Jacobian) images derived from T1-weighted MRI scans using 3D Convolutional Autoencoders, as well as for using trained models to identify regions of the brain that were most important for identifying cases with reading disability. 
 
 This collaborative project between the Multimedia and Bioinformatics lab in Clemson University and the Eckert laboratory at the Medical University of South Carolina (MUSC) was supported by the NICHD (R01 HD 069374).
 
