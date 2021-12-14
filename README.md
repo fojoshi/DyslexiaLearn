@@ -1,6 +1,6 @@
 # DyslexiaLearn
 
-Project repository for predicting Dyslexia using defomration-based (Jacobian) images derived from T1-weighted MRI scans using 3D Convolutional Autoencoders, as well as for using trained models to identify regions of the brain that were most important for identifying cases with reading disability. 
+This is the repository for resources used to predict reading disability using defomration-based (Jacobian) images derived from T1-weighted MRI scans using 3D Convolutional Autoencoders, as well as for using trained models to identify regions of the brain that were most important for identifying cases with reading disability. 
 
 This collaborative project between the Multimedia and Bioinformatics lab in Clemson University and the Eckert laboratory at the Medical University of South Carolina (MUSC) was supported by the NICHD (R01 HD 069374).
 
@@ -28,9 +28,9 @@ data
 └── xTemplate_gm50wm50_mask.nii
 ```
 
-- `n192_data_for_resid.csv` contains metadata information about all scans, specifically, it needs to contain the columns for `id`, `site` and `Group`
+- `n192_data_for_resid.csv` contains data linked to the imaging data, including participant label (id), research site (site), and reading disability label (Group)
 
-- Inside the `data/raw_images` folder, 3D 121x145x121 jacobian brain MRI scans are expected with the following naming convention:
+- Inside the `data/raw_images` folder, 3D 121x145x121 Jacobian determinant images art stored with the following naming convention:
 `jac_rc1r<<id>>_debiased_deskulled_denoised_xTemplate_subtypes.nii`
 
 - `xTemplate_gm50wm50_mask.nii` is a brain mask of the shape 121x145x121
@@ -86,7 +86,7 @@ The output `results.json` file will have the following structure:
 
 ### Predicting class probabilities with trained models
 
-The following command will generate a csv file containing predicted class probabilities for each subject in the `data/raw_images` folder
+The following command will generate a csv file containing predicted class probabilities for each participant in the `data/raw_images` folder
 
 `python dyslexialearn/predictor.py input_configs/predict.json`
 
