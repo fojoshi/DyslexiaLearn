@@ -5,7 +5,7 @@ import numpy as np
 
 def load_data():
     csv = pd.read_csv("data/n192_data_for_resid.csv") 
-    mask = nib.load("data/xTemplate_gm50wm50_mask.nii").get_fdata()
+    mask = nib.load("data/brain_mask.nii").get_fdata()
 
     X = []
     for id_name in csv['id']:
