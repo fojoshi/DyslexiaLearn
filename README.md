@@ -25,7 +25,7 @@ The below datafiles are required for the code to function
 data
 ├── n192_data_for_resid.csv
 ├── raw_images
-└── xTemplate_gm50wm50_mask.nii
+└── brain_mask.nii
 ```
 
 - `n192_data_for_resid.csv` contains data linked to the imaging data, including participant label (id), research site (site), and reading disability label (Group)
@@ -33,7 +33,7 @@ data
 - Inside the `data/raw_images` folder, 3D 121x145x121 Jacobian determinant images art stored with the following naming convention:
 `jac_rc1r<<id>>_debiased_deskulled_denoised_xTemplate_subtypes.nii`
 
-- `xTemplate_gm50wm50_mask.nii` is a brain mask of the shape 121x145x121
+- `brain_mask.nii` is a brain mask of the shape 121x145x121
 
 ## Directory Setup
 
